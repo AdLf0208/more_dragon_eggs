@@ -1,0 +1,31 @@
+# More Dragon Eggs (Horizon port) — one flat SDK package: code only.
+#
+# Migrated 2026-11-18 from the retired `.hnmod` container (Horizon's mod-API merge,
+# #16941). The manifest below is the only one: identity and the exact native pins.
+# This port carries **no content** — the egg and the wall head are vanilla 26.3
+# states — so there is no `assets/` or `data/` and no `[module]`/`[inject]` section.
+#
+# Licence: MIT, read from the jar's own `META-INF/neoforge.mods.toml`
+# (`license="MIT"`, author "Darkere") and from `gradle.properties`
+# (`mod_license=MIT`) at the analysed commit; the repository ships no LICENSE
+# file. Rank 0, permissive. Local-only until the maintainer approves publishing
+# (ARCHITECTURE.md §8); `LICENSE` and `LICENSE-NOTICE.md` travel inside the package.
+id = "moredragoneggs"
+name = "More Dragon Eggs"
+version = "0.2.0"
+description = """Vanilla places a dragon egg on the first ender-dragon kill only; this mod places one at
+the End exit podium on every kill after the first. With spawn_head = true in config/moredragoneggs.conf
+it also puts a dragon wall head beside the podium, facing the nearest player, on every kill."""
+authors = ["Darkere", "AdLf0208"]
+# The content API: exact and checked. The schema's one shared value; this package registers
+# nothing, but the field is required and unknown values are refused — do not "correct" it.
+api = "0.2"
+# The installation side, not the hook's: an integrated server belongs to the client
+# installation, so a LAN host or a single-player world needs both.
+side = "both"
+capabilities = ["registries"]
+
+[native]
+game = "26.3"
+horizon = "0b14f8acfd97fa2c750e42795249dcc981178ca4"
+mixins = "e59da9094f0c2fdda6c627fe9eff22dec6a906f0"

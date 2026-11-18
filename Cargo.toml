@@ -1,0 +1,22 @@
+[package]
+# Port of More Dragon Eggs 5.0 (Darkere/moredragoneggs, commit 450678c, MIT).
+# Minecraft Java 1.21.1 NeoForge; the port targets Horizon 26.3 at the pin in
+# horizon-mod.toml. Clean-room Rust rewrite from the mod's behaviour (FINDINGS.md).
+#
+# Cargo's name and version are not the mod's identity: horizon-mod.toml is.
+name = "moredragoneggs"
+version = "0.2.0"
+edition = "2024"
+license = "MIT"
+description = "More Dragon Eggs for Horizon: a dragon egg on every dragon kill after the first"
+publish = false
+
+[lib]
+# The pure rules are `src/runtime.rs`; the crate root is `src/lib.rs`.
+path = "src/lib.rs"
+
+[dependencies]
+# The pinned SDK's API crate, fetched into .horizon/sdk/ by any `cargo horizon-mod`
+# command (the launcher builds against its own copy of the same build). This port
+# adds no registry dependency of its own, so no Cargo.lock is packed (see notes.md).
+horizon-mod-api = { path = ".horizon/sdk/api/crates/horizon-mod-api" }
